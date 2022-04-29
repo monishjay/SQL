@@ -1,3 +1,18 @@
+
+-- Description: Set of SQL Functions: 
+
+-- #1: Put system date into dual (dummy table), add variations of date for each succeeding row in dual table using SQL functions
+-- #2: Query which retrieves a future reservation where the check in date is after today's date and has an "Upcoming" status
+-- #3: Pulls list of customer names who have a completed reservation in last 30 days based on check_out_date
+-- #4: Returns reservation and customers for specific date (Nov. 5th 2021) with their anticipated total of their reservation 
+-- #5: Returns specified columns from customer_payment table
+-- #6: Returns specific columns for each customer address
+-- #7: Returns list of customers with their "redacted" credit card number on file
+-- #8: Returns results which are joined between tables using a CASE statement
+-- #9: Returns certain data for each customer in database
+-- #10: Updates query from #9 by turning it into an in-line join subuery
+
+
 -- #1
 -- returns set of formatted dates
 -- spacing on date_with_hours
@@ -34,7 +49,6 @@ select upper(substr(first_name,1,1) || '. ' || c.last_name) as customer_name,
     
 -- #4
 -- returns anticipated total for customers checking in on November 5th
--- what is right date
 select r.reservation_id, r.customer_id,
     to_char(ro.weekend_rate * 1.1 * 2, '$999.99') as anticipated_total
     from reservation r
@@ -54,7 +68,7 @@ select cardholder_last_name,
     order by days_until_card_expiration;
 
 -- #6
--- returns customer adress information
+-- returns customer address information
 select last_name, 
     substr(address_line_1,0,instr(address_line_1, ' ')) as Street_Nbr,
     ltrim(substr(address_line_1,instr(address_line_1, ' '))) as Street_Name,
