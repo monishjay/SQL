@@ -1,4 +1,13 @@
--- #2
+
+-- Description: ETL (Extract - Transform - Load) Process 
+
+-- 1. Creates new table to serve as data warehouse for current and acquired customers 
+-- 2. Creates view statements to format data from both tables in a unified, consistent format
+-- 3. Select columns from view and insert into original customer data warehouse if records don't already exist
+-- 4. Update records on customer data warehouse with latest data from the source views
+-- 5. Create customer ETL procedure to execute insert / update statements to moodify customer data warehouse
+
+
 -- creates customer datawarehouse table to compile customers and acquired customers
 drop table customer_dw;
 create table customer_dw 
@@ -16,7 +25,7 @@ stay_credits_used number,
 constraint pk_id_source primary key (data_source, customer_id)
 );
 
--- #3
+
 -- creates 2 views that formats data from both customer tables
 create or replace view customer_view 
 as
@@ -29,7 +38,7 @@ select 'AQUI' as data_source, acquired_customer_id as customer_id, ca_first_name
 ca_email as email, ca_phone as phone, ca_zip_code as zip, ca_credits_remaining as stay_credits_earned, 0 as stay_credits_used
 from customer_acquisition;
 
--- #4
+
 -- select from views and insert new records into customer_dw 
 
 -- insert customer records
@@ -49,7 +58,6 @@ from customer_acquisition_view  c left join customer_dw cd
 where cd.customer_id is null;
 
 
--- #5
 -- updates customer_dw table with latest name, email, phone, zip or credits from source views
 
 -- merges customer table data
@@ -81,7 +89,6 @@ merge into customer_dw cd
             cd.stay_credits_used = c.stay_credits_used;
 
             
--- #6
 -- creates procedure that runs insert and merge statements
 create or replace procedure customer_etl_proc
 as
