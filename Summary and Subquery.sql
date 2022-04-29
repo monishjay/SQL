@@ -1,5 +1,5 @@
--- monish jayakumar mj27639
--- summaries and subqueries
+
+-- Description: SQL Problem sets using Summaries and Subqueries
 
 -- #1
 -- returns count of customers and max and min stay credits earned
