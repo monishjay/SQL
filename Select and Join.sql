@@ -1,5 +1,7 @@
- -- monish jayakumar mj27639
- 
+
+-- Description: SQL Problem sets using SELECT and JOIN statements
+
+
  -- problem 1
  -- returns all customer cardholder information 
 select cardholder_first_name, cardholder_last_name, card_type, expiration_date
