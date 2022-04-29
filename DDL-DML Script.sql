@@ -1,5 +1,5 @@
 
--- Description: DDL / DML statements including: creating tables with designed fields, dropping tables, creating sequences, and inserting data into tables
+-- Description: DDL / DML statements including: creating tables with designed fields, dropping tables, creating sequences / indexes, and inserting data into tables
 
 drop table reservation_details;
 drop table location_features_linking;
