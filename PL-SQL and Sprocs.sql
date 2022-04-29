@@ -1,4 +1,20 @@
+ 
+ -- Description: Set of PL/SQL statements 
+ 
+ -- #1: Script which declares count_reservations variable and sets it to count of all reservations placed by customer with specific ID
+ -- #2: Same as #1, except allows user to input a specific customer ID
+ -- #3: Script which inserts new customer into customer table
+ -- #4: Script which uses bulk collect to capture list of data which start with specific letter (in this case "P")
+ -- #5: Script which uses a cursor to capture multiple features of a hotel such as location name, city, and feature
+ -- #6: Same as #3 except allows user to pass in data like customerID, first and last name when creating a new customer
+ -- #7: Creates function which returns total number of rooms a customer has reserved when passed in a customerID
+ 
+ 
+ 
+ 
+ 
  set serveroutput on;
+ 
  
  -- #1
  -- initalizes count of reservations variable and prints if customer has more or fewer than 15 reservations
